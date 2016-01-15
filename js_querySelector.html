@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Query selector</h1>
+        <ul>
+            <li>
+                <xmp><p id="premierP" class="paragraphe">Premier paragraphe</p></xmp>
+                <p id="premierP" class="paragraphe">Premier paragraphe</p>
+            </li>
+            <li>
+                <xmp><p id="secondP" class="paragraphe">Deuxième paragraphe</p></xmp>
+                <p id="secondP" class="paragraphe">Deuxième paragraphe</p>
+            </li>
+        </ul>
+        
+        <hr />
+        
+        <h2>Sélection par id: renvoi un élément (ou null)</h2>
+        <ul>
+            <li>
+                <xmp><script>document.write(document.getElementById("premierP"));</script></xmp>
+                <strong><script>document.write(document.getElementById("premierP"));</script></strong>
+            </li>
+            <li> 
+                <xmp><script>document.write(document.querySelector("#premierP"));</script></xmp>
+                <strong><script>document.write(document.querySelector("#premierP"));</script></strong>
+            </li>
+        </ul>
+        
+        <h2>Sélection par class: renvoi un tableau avec les éléments (ou null)</h2>
+        <ul>
+           <li>
+               <xmp><script>document.write(document.getElementsByClassName("paragraphe"));</script></xmp>
+               <strong><script>document.write(document.getElementsByClassName("paragraphe"));</script></strong>
+            </li>
+           <li>
+               <xmp><script>document.write(document.querySelectorAll(".paragraphe"));</script></xmp>
+               <strong><script>document.write(document.querySelectorAll(".paragraphe"));</script></strong>
+            </li>
+        </ul>
+        
+        <h2>Sélection par nom de balise: renvoi un tableau avec les éléments (ou null)</h2>
+        <ul>
+            <li>
+                <xmp><script>document.write(document.getElementsByTagName("img"));</script></xmp>
+                <strong><script>document.write(document.getElementsByTagName("img"));</script></strong>
+            </li>
+            <li>
+                <xmp><script>document.write(document.querySelectorAll("img"));</script></xmp>
+                <strong><script>document.write(document.querySelectorAll("img"));</script></strong>
+            </li>
+        </ul>
+
+        <hr />
+        
+        <h1>Exemple d'action sur événement: changement de couleur des paragraphes</h1>
+        <xmp><button type="button" onclick="change_col();">Changer couleur paragraphes</button></xmp>
+        <button type="button" onclick="change_col();">Changer couleur paragraphes</button>
+        <xmp>
+            <script>
+                function change_col() {
+                    var paraphs = document.querySelectorAll(".paragraphe");
+                    for (var i=0; i<paraphs.length; i++) {
+                        if (paraphs[i].style.color != "red") {
+                            paraphs[i].style.color = "red";
+                        } else {
+                            paraphs[i].style.color = "black";
+                        }
+                    }
+                }
+            </script>
+        </xmp>
+
+        <script>
+        function change_col() {
+            // passe les paragraphes en rouges s'ils sont en noir et inversement
+            var paraphs = document.querySelectorAll(".paragraphe");
+            for (var i=0; i<paraphs.length; i++) {
+                if (paraphs[i].style.color != "red") {
+                    paraphs[i].style.color = "red";
+                } else {
+                    paraphs[i].style.color = "black";
+                }
+            }
+        }
+        </script>
+    </body>
+</html>
