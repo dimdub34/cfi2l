@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=``utf-8'' />
+        <title>Première manipulation avec le DOM</title>
+    </head>
+  
+    <!-- avec onload, le contenu est lancé une fois le chargement de la page terminée -->
+    <body onload="ajouter(document.querySelector('#demo'), 'Hello World!'); creer_paragraphe();"> 
+        <h1>Ajout de texte dans un paragraphe</h1>
+        <p id="demo"></p>
+    
+        <h1>Concaténation et remplacement</h1>
+        <p id="demo1">Ici le contenu initial</p>
+        <button type="button" onclick="ajouter(document.querySelector('#demo1'), ' et ici un ajout');">ajouter</button>  
+        <button type="button" onclick="remplacer(document.querySelector('#demo1'), 'Le contenu après remplacement');">remplacer</button>
+        
+        <h1>Modification et ajout d'attribut</h1>
+        <p id="demo2">Un lien vers <a href="http://www.univ-montp1.fr">l'UM1</a></p>
+        <button type="button" onclick="corriger();">Cliquer pour corriger</button>
+        
+        <h1>Création d'éléments et modification de style</h1>
+        <div id="demo3"></div>
+        <button type="button" onclick="changer_fontStyle(document.querySelector('#demo3p'), 'italic');">Changer style</button>
+
+        <script>
+            function ajouter(element, contenu) {
+              element.innerHTML += contenu;
+            }
+            function remplacer(element, contenu) {
+              element.innerHTML = contenu;
+            }
+            
+            function corriger() {
+                // correction du lien et ajout d'un attribut
+                var monLien =  document.querySelector("#demo2 a");
+                remplacer(monLien, "l'Université de Montpellier");
+                monLien.href = "http://www.umontpellier.fr";
+                monLien.setAttribute("target", "_blank");
+            }
+            
+            function creer_paragraphe() {
+                var paraph = document.createElement("p"); // création d'un paragraphe
+                paraph.setAttribute("id", "demo3p"); // ajout attribut id
+                paraph.style.fontWeight = "bold"; // changement style du paragraphe
+                paraph.style.color = "red";
+                var contenu = document.createTextNode("Le contenu du paragraphe"); // création de texte
+                paraph.appendChild(contenu); // ajoute le texte au paragraphe par appendChild (ajout enfant)
+                document.querySelector("#demo3").appendChild(paraph);  // ajout du paragraphe au div demo3                
+            }
+            function changer_fontStyle(element, newstyle) {
+                element.style.fontStyle = newstyle; // changement de style
+            }
+        </script>
+      </body>
+</html>
