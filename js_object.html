@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <script>
+            // création d'une classe
+            function Candidat(nom, prenom, annee_naissance, ville_naissance) {
+                this.nom = nom;
+                this.prenom = prenom;
+                this.annee_naissance = annee_naissance;
+                this.ville_naissance = ville_naissance
+            }
+            // création d'une méthode pour la classe (utilisation de prototype)
+            Candidat.prototype.presenter = function() {
+                return "Le candidat s'appelle " + this.prenom + " " + this.nom + " il est né en " + this.annee_naissance + 
+                    " à " + this.ville_naissance;
+            }
+        </script>
+    </head>
+    
+    <body>
+        <h1>Définition d'objet en javascript</h1>
+        <h3>Liste des candidats</h3>
+            <ul>
+            <script>
+                var candidats = [
+                    new Candidat("Dupont", "Jacques", 1950, "Paris"), 
+                    new Candidat("Durant", "Paul", 1960, "Perpignan")
+                ]
+                for (var i=0; i<candidats.length; i++) {
+                    document.write("<li>Candidat " + (i+1) + ": " + candidats[i].presenter() + "</li>");
+                }
+            </script>
+            </ul>
+        
+        <p>Pour aller plus loin: <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Introduction_%C3%A0_JavaScript_orient%C3%A9_objet" target="_blank">https://developer.mozilla.org/fr/docs/Web/JavaScript/Introduction_%C3%A0_JavaScript_orient%C3%A9_objet</a></p>
+    </body>
+</html>
